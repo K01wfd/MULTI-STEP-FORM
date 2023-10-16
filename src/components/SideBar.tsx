@@ -1,7 +1,9 @@
 import styles from '../styles/sideBar.module.css';
 import NavItem from './NavItem';
-
-function NavBar() {
+interface Props {
+  formStepNum: number;
+}
+function NavBar({ formStepNum }: Props) {
   const stepDetails = [
     { stepNumber: 1, stepTitle: 'Your info' },
     { stepNumber: 2, stepTitle: 'Select plan' },
@@ -12,13 +14,23 @@ function NavBar() {
     <nav className={styles.nav}>
       <div className={styles.navWrapper}>
         <ul className={styles.navList}>
-          {stepDetails.map((step) => (
-            <NavItem
-              key={step.stepNumber}
-              stepNumber={step.stepNumber}
-              stepTitle={step.stepTitle}
-            />
-          ))}
+          {stepDetails.map(({ stepNumber, stepTitle }) =>
+            formStepNum === stepNumber ? (
+              <NavItem
+                active={'active'}
+                key={stepNumber}
+                stepNumber={stepNumber}
+                stepTitle={stepTitle}
+              />
+            ) : (
+              <NavItem
+                active=''
+                key={stepNumber}
+                stepNumber={stepNumber}
+                stepTitle={stepTitle}
+              />
+            )
+          )}
         </ul>
       </div>
     </nav>
