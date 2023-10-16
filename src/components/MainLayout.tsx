@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import styles from '../styles/main.module.css';
+import styles from '../styles/grid.module.css';
 interface Props {
   children: ReactNode;
 }

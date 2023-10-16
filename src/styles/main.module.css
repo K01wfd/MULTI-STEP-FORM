@@ -1,19 +1,15 @@
-.mainGrid {
-  max-width: 940px;
-  margin-inline: auto;
-  display: flex;
-  column-gap: 1rem;
-  margin-block: 8rem;
-  min-height: 80vh;
-  background-color: var(--white);
-  box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
-  padding: 1.6rem;
+.rightContainer {
+  padding: 4rem;
 }
 
 @media screen and (max-width: 587px) {
-  .mainGrid {
-    flex-direction: column;
-    padding: 0;
-    margin-block: 0;
+  .rightContainer {
+    max-width: 80%;
+    margin-inline: auto;
+    background-color: var(--white);
+    position: relative;
+    z-index: 100;
+    transform: translateY(-8rem);
+    padding: 3.2rem 2.4rem;
   }
 }

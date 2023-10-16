@@ -21,9 +21,14 @@
 
   /* TYPOGRAPHY */
   --ff: 'Ubuntu', sans-serif;
+  --fs-32: 3.2rem;
+  --fs-24: 2.4rem;
+  --fs-16: 1.6rem;
+  --fs-15: 1.5rem;
   --fs-14: 1.4rem;
   --fs-12: 1.2rem;
 }
+
 html {
   font-size: 62.5%;
 }
