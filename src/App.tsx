@@ -5,7 +5,8 @@ import Form from './components/Form';
 import Button from './components/Button';
 import LinkButton from './components/LinkButton';
 import { steps } from './data/steps';
-import styles from './styles/main.module.css';
+import mainStyles from './styles/main.module.css';
+import footerStyles from './styles/footer.module.css';
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -19,7 +20,7 @@ function App() {
     <>
       <MainLayout>
         <SideBar formStepNum={currentStep} />
-        <main className={styles.rightContainer}>
+        <main className={mainStyles.rightContainer}>
           <div>
             {steps.map((step) =>
               step.stepNumber === currentStep ? (
@@ -27,12 +28,13 @@ function App() {
               ) : null
             )}
           </div>
-
-          <div>
+        </main>
+        <footer className={footerStyles.footer}>
+          <div className={footerStyles.buttonsBox}>
             {currentStep > 1 && <LinkButton onPrevStep={() => prevStep()} />}
             <Button buttonText='next step' onNextStep={() => nextStep()} />
           </div>
-        </main>
+        </footer>
       </MainLayout>
     </>
   );

@@ -8,6 +8,7 @@
   flex-basis: 33%;
   padding: 4rem 3.2rem;
   color: var(--white);
+  grid-row: 1 / -1;
 }
 .navList {
   list-style: none;
