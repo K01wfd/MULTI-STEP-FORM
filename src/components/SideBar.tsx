@@ -11,8 +11,8 @@ function NavBar({ formStepNum }: Props) {
     { stepNumber: 4, stepTitle: 'Summary' },
   ];
   return (
-    <nav className={styles.nav}>
-      <div className={styles.navWrapper}>
+    <aside className={styles.navWrapper}>
+      <nav>
         <ul className={styles.navList}>
           {stepDetails.map(({ stepNumber, stepTitle }) =>
             formStepNum === stepNumber ? (
@@ -32,8 +32,8 @@ function NavBar({ formStepNum }: Props) {
             )
           )}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </aside>
   );
 }
 
