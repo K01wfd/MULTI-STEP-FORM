@@ -1,11 +1,11 @@
 import MainLayout from './components/MainLayout';
-import NavBar from './components/NavBar';
+import SideBar from './components/SideBar';
 function App() {
   return (
     <>
       <MainLayout>
-        <NavBar />
-        <NavBar />
+        <SideBar />
+        <div>hello</div>
       </MainLayout>
     </>
   );

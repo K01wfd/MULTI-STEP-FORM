@@ -1,14 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap');
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font: inherit;
 }
+:root {
+  /* COLORS */
+  --gray-200: #f8f9ff;
+  --gray-300: #eff5ff;
+  --gray-400: #d6d9e6;
+  --gray-500: #9699aa;
 
+  --blue-200: #bee2fd;
+  --blue-300: #abbcff;
+  --blue-500: #483eff;
+  --blue-900: #022959;
+
+  --white: #fff;
+
+  /* TYPOGRAPHY */
+  --ff: 'Ubuntu', sans-serif;
+  --fs-14: 1.4rem;
+  --fs-12: 1.2rem;
+}
 html {
   font-size: 62.5%;
 }
 
 body {
   font-size: 1.6rem;
+  font-family: var(--ff);
   min-height: 100vh;
+  background-color: var(--gray-300);
+}
+img,
+svg {
+  display: block;
+  max-width: 100%;
 }

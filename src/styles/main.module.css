@@ -1,7 +1,11 @@
 .mainGrid {
-  max-width: 700px;
+  max-width: 940px;
   margin-inline: auto;
   display: flex;
   column-gap: 1rem;
   margin-block: 8rem;
+  min-height: 80vh;
+  background-color: var(--white);
+  box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
+  padding: 1.6rem;
 }

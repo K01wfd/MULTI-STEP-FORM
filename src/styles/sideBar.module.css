@@ -1,0 +1,49 @@
+.nav {
+  background: url('../assets/images/bg-sidebar-desktop.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  border-radius: 10px;
+  flex-basis: 33%;
+  padding: 4rem 3.2rem;
+  color: var(--white);
+}
+.navList {
+  list-style: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: var(--fs-14);
+}
+.navList > * + * {
+  margin-top: 3.1rem;
+}
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.navStepNumber {
+  padding: 0.5rem 0.9rem;
+  background: transparent;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  width: 33px;
+  height: 33px;
+  display: grid;
+  place-content: center;
+}
+.navStepNumber.active {
+  background-color: var(--blue-200);
+  color: var(--blue-900);
+  border: none;
+}
+.navStepDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.navStepDetails p {
+  color: var(--blue-300);
+  font-size: var(--fs-12);
+}
