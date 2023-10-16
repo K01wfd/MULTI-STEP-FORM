@@ -37,6 +37,7 @@
   background-color: var(--blue-200);
   color: var(--blue-900);
   border: none;
+  transition: all 0.2s ease-in;
 }
 .navStepDetails {
   display: flex;
