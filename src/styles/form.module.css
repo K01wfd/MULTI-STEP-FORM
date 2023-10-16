@@ -1,0 +1,15 @@
+.form h2 {
+  font-size: var(--fs-32);
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+.form p {
+  color: var(--gray-500);
+  font-size: var(--fs-16);
+}
+
+@media screen and (max-width: 587px) {
+  .form h2 {
+    font-size: var(--fs-24);
+  }
+}

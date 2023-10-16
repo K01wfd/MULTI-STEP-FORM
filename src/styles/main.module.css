@@ -1,5 +1,7 @@
 .rightContainer {
   padding: 4rem;
+  max-width: 85%;
+  margin-inline: auto;
 }
 
 @media screen and (max-width: 587px) {

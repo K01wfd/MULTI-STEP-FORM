@@ -1,10 +1,11 @@
 import { InputInterface } from '../interfaces/steps';
+import styles from '../styles/step1.module.css';
 interface InputProps {
   details: InputInterface;
 }
 function Input({ details }: InputProps) {
   return (
-    <div>
+    <div className={styles.inputGroup}>
       <label htmlFor={details.id}>{details.label}</label>
       <input
         type={details.type}

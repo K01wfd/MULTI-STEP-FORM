@@ -1,20 +1,19 @@
 .mainGrid {
   max-width: 940px;
   margin-inline: auto;
-  display: flex;
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-rows: repeat(2, 1fr);
-  min-height: 80vh;
+  max-height: 90vh;
   background-color: var(--white);
   box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
   padding: 1.6rem;
+  margin-block: 4rem;
 }
 
 @media screen and (max-width: 587px) {
   .mainGrid {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 1fr);
+    display: block;
     padding: 0;
     margin-block: 0;
     background: transparent;
