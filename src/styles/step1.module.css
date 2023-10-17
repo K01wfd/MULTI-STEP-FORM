@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 0.8rem;
-  margin-top: 2.5rem;
+  margin-top: 3.5rem;
 }
 /* STEP 1 */
 .inputGroup label {

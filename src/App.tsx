@@ -21,9 +21,14 @@ function App() {
       <MainLayout>
         <SideBar formStepNum={currentStep} />
         <main className={mainStyles.rightContainer}>
-          {steps.map((step) =>
-            step.stepNumber === currentStep ? (
-              <Form key={step.stepNumber} formDetails={step} />
+          {steps.map(({ stepNumber, stepTitle, stepSubTitle }) =>
+            stepNumber === currentStep ? (
+              <Form
+                key={stepNumber}
+                stepNumber={stepNumber}
+                stepTitle={stepTitle}
+                stepSubTitle={stepSubTitle}
+              />
             ) : null
           )}
         </main>

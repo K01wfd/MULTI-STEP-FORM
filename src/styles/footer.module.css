@@ -1,9 +1,14 @@
 .footer {
   align-self: end;
-  padding: 4rem;
-  background: var(--white);
+  padding: 3rem;
 }
 .buttonsBox {
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 587px) {
+  .footer {
+    background: var(--white);
+  }
 }

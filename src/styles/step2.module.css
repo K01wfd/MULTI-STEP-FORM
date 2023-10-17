@@ -23,7 +23,9 @@
   border: 1px solid var(--gray-400);
   border-radius: 4px;
   padding: 1.6rem 6rem 1.8rem 1.7rem;
-  max-width: 100%;
+  min-width: 160px;
+  max-width: 160px;
+  min-height: 170px;
   max-height: 170px;
 }
 .plansGroup .plan:hover {
@@ -101,17 +103,26 @@
 .activePlan {
   color: var(--blue-900);
 }
-@media screen and (min-width: 587px) and (max-width: 690px) {
+@media screen and (min-width: 587px) and (max-width: 830px) {
   .plansGroup .plan {
     border: 1px solid var(--gray-400);
     border-radius: 4px;
     padding: 1.6rem 3rem 1.8rem 1.7rem;
-    max-height: 170px;
+    min-width: 110px;
+    max-width: 110px;
+    min-height: 185px;
+    max-height: 185px;
   }
 }
 @media screen and (max-width: 587px) {
   .plansWrapper {
     flex-direction: column;
+  }
+  .plansGroup .plan {
+    min-width: auto;
+    max-width: 100%;
+    min-height: auto;
+    max-height: auto;
   }
   .planDetails {
     flex-direction: row;
