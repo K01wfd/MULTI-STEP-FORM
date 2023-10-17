@@ -49,6 +49,7 @@ function StepTwoInputs() {
         <PlanSwitch
           whichPlan={isYearly}
           onPlanChange={(event) => handlePlanChange(event)}
+          activePlane={styles.activePlan}
         />
       </div>
     </>

@@ -4,18 +4,31 @@
   margin-block: 4.6rem;
 }
 
+/* EACH GROUP */
 .plansWrapper .plansGroup {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
 }
+.plansGroup input[type='radio'] {
+  display: none;
+}
+.plansGroup input[type='radio']:checked ~ .plan {
+  border: 1px solid var(--blue-500);
+  background: var(--gray-200);
+}
+
+/* EACH PLAN */
 .plansGroup .plan {
   border: 1px solid var(--gray-400);
   border-radius: 4px;
-  padding: 1.6rem 5rem 1.8rem 1.7rem;
-  min-width: 150px;
-  min-height: 170px;
+  padding: 1.6rem 6rem 1.8rem 1.7rem;
+  max-width: 100%;
   max-height: 170px;
+}
+.plansGroup .plan:hover {
+  cursor: pointer;
+  border: 1px solid var(--blue-500);
 }
 .planDetails {
   display: flex;
@@ -26,6 +39,11 @@
   margin-bottom: 3.5rem;
   width: 35px;
   height: 35px;
+}
+.planDetails div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
 }
 .planDetails h3 {
   font-size: var(--fs-16);
@@ -50,10 +68,58 @@
   display: flex;
   gap: 2.8rem;
   justify-content: center;
+  color: var(--gray-500);
+  font-weight: 500;
+  font-size: var(--fs-14);
 }
-.plansGroup input[type='radio'] {
+.switch {
+  position: relative;
+  width: 40px;
+  height: 20.5px;
+  display: inline-block;
+  background-color: var(--blue-900);
+  border-radius: 1rem;
+  cursor: pointer;
+}
+.switch::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: white;
+  top: 1px;
+  left: 2.5px;
+  transition: all 0.3s;
+}
+.planSwitch input[type='checkbox']:checked + .switch::after {
+  left: 20px;
+}
+.planSwitch input[type='checkbox'] {
   display: none;
 }
-.plansGroup input[type='radio']:checked ~ .plan {
-  border: 1px solid var(--blue-500);
+.activePlan {
+  color: var(--blue-900);
+}
+@media screen and (min-width: 587px) and (max-width: 690px) {
+  .plansGroup .plan {
+    border: 1px solid var(--gray-400);
+    border-radius: 4px;
+    padding: 1.6rem 3rem 1.8rem 1.7rem;
+    max-height: 170px;
+  }
+}
+@media screen and (max-width: 587px) {
+  .plansWrapper {
+    flex-direction: column;
+  }
+  .planDetails {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 2rem;
+    align-items: center;
+  }
+  .planDetails img {
+    margin: 0;
+  }
 }

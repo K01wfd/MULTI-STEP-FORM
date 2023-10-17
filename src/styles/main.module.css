@@ -6,7 +6,7 @@
 
 @media screen and (max-width: 587px) {
   .rightContainer {
-    max-width: 80%;
+    max-width: 95%;
     margin-inline: auto;
     background-color: var(--white);
     position: relative;

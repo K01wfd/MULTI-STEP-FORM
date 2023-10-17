@@ -18,9 +18,11 @@ function Plans({ plane, icon, price, bonus }: PlanProps) {
       <label htmlFor={plane} className={styles.plan}>
         <div className={styles.planDetails}>
           <img src={icon} alt={plane + 'icon'} />
-          <h3>{plane}</h3>
-          <p>{price}</p>
-          {bonus && <p className={styles.bonus}>{bonus}</p>}
+          <div>
+            <h3>{plane}</h3>
+            <p>{price}</p>
+            {bonus && <p className={styles.bonus}>{bonus}</p>}
+          </div>
         </div>
       </label>
     </div>
