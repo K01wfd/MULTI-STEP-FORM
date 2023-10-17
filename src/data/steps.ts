@@ -9,4 +9,9 @@ export const steps = [
     stepTitle: 'Select your plan',
     stepSubTitle: 'You have the option of monthly or yearly billing.',
   },
+  {
+    stepNumber: 3,
+    stepTitle: 'Pick add-ons',
+    stepSubTitle: 'Add-ons help enhance your gaming experience.',
+  },
 ];

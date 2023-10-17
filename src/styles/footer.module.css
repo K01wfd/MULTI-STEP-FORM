@@ -1,6 +1,5 @@
 .footer {
-  align-self: end;
-  padding: 3rem;
+  padding: 3rem 6rem;
 }
 .buttonsBox {
   display: flex;

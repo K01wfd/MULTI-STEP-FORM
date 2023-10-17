@@ -1,0 +1,62 @@
+input[type='checkbox'] {
+  position: relative;
+  transform: translate(2rem, 6rem);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  font: inherit;
+  width: 1.2em;
+  height: 1.2em;
+  border: 0.15em solid var(--gray-400);
+  border-radius: 0.15em;
+  display: grid;
+  place-content: center;
+}
+input[type='checkbox']:checked {
+  background: var(--blue-500);
+  border-color: var(--blue-500);
+}
+input[type='checkbox']::after {
+  content: '✓';
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  font: inherit;
+  position: absolute;
+  top: -4px;
+  left: 1px;
+}
+input[type='checkbox']:checked::after {
+  transform: scale(1);
+  color: #fff;
+}
+input[type='checkbox']:checked + .addsGroup {
+  border: 1px solid var(--blue-500);
+  background-color: var(--gray-200);
+}
+.addsGroup {
+  padding: 1.8rem 2.3rem 1.8rem 6rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  border: 1px solid var(--gray-400);
+  margin-top: 1rem;
+  width: 100%;
+}
+.addsGroup:hover {
+  cursor: pointer;
+}
+.addsDetails {
+}
+.addsDetails h3 {
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+.addsDetails p {
+  font-size: var(--fs-14);
+}
+.addsPrice {
+  color: var(--blue-500) !important;
+  font-size: var(--fs-14);
+}

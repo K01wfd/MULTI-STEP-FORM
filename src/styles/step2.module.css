@@ -23,8 +23,8 @@
   border: 1px solid var(--gray-400);
   border-radius: 4px;
   padding: 1.6rem 6rem 1.8rem 1.7rem;
-  min-width: 160px;
-  max-width: 160px;
+  min-width: 158px;
+  max-width: 158px;
   min-height: 170px;
   max-height: 170px;
 }
