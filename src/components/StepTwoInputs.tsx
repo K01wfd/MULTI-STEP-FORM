@@ -3,6 +3,7 @@ import arcade from '../assets/images/icon-arcade.svg';
 import advanced from '../assets/images/icon-advanced.svg';
 import pro from '../assets/images/icon-pro.svg';
 import PlanSwitch from './PlanSwitch';
+import styles from '../styles/step2.module.css';
 import { useState } from 'react';
 const monthlyPlan = [
   { plan: 'arcade', price: '$9/mo', icon: arcade },
@@ -29,7 +30,7 @@ function StepTwoInputs() {
 
   return (
     <>
-      <div>
+      <div className={styles.plansWrapper}>
         {!isYearly
           ? monthlyPlan.map(({ plan, price, icon }) => (
               <Plans key={plan} icon={icon} plane={plan} price={price} />
@@ -44,10 +45,12 @@ function StepTwoInputs() {
               />
             ))}
       </div>
-      <PlanSwitch
-        whichPlan={isYearly}
-        onPlanChange={(event) => handlePlanChange(event)}
-      />
+      <div className={styles.planSwitch}>
+        <PlanSwitch
+          whichPlan={isYearly}
+          onPlanChange={(event) => handlePlanChange(event)}
+        />
+      </div>
     </>
   );
 }

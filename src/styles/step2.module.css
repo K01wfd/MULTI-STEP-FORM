@@ -1,0 +1,59 @@
+.plansWrapper {
+  display: flex;
+  gap: 1.8rem;
+  margin-block: 4.6rem;
+}
+
+.plansWrapper .plansGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.plansGroup .plan {
+  border: 1px solid var(--gray-400);
+  border-radius: 4px;
+  padding: 1.6rem 5rem 1.8rem 1.7rem;
+  min-width: 150px;
+  min-height: 170px;
+  max-height: 170px;
+}
+.planDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.planDetails img {
+  margin-bottom: 3.5rem;
+  width: 35px;
+  height: 35px;
+}
+.planDetails h3 {
+  font-size: var(--fs-16);
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+.planDetails p {
+  font-size: var(--fs-14);
+  color: var(--gray-500);
+}
+.planDetails .bonus {
+  margin-top: 0.5rem;
+  font-size: var(--fs-12);
+  color: var(--blue-900);
+}
+
+/* PLAN SWITCH */
+.planSwitch {
+  padding: 1.9rem 0;
+  background: var(--gray-200);
+  border-radius: 8px;
+  display: flex;
+  gap: 2.8rem;
+  justify-content: center;
+}
+.plansGroup input[type='radio'] {
+  display: none;
+}
+.plansGroup input[type='radio']:checked ~ .plan {
+  border: 1px solid var(--blue-500);
+}

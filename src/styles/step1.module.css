@@ -1,8 +1,8 @@
 .inputGroup {
-  margin-top: 3.5rem;
   display: flex;
   flex-direction: column;
   row-gap: 0.8rem;
+  margin-top: 2.5rem;
 }
 /* STEP 1 */
 .inputGroup label {
@@ -31,7 +31,6 @@ input[type='email']:focus {
 /* STEP 1 END */
 @media screen and (max-width: 587px) {
   .inputGroup {
-    margin-top: 2.5rem;
     row-gap: 0.5rem;
   }
   .inputGroup label {

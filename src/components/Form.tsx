@@ -12,7 +12,6 @@ function Form({ formDetails }: FormProps) {
       <h2>{formDetails.stepTitle}</h2>
       <p>{formDetails.stepSubTitle}</p>
       {formDetails.stepNumber === 1 && <StepOneInputs />}
-
       {formDetails.stepNumber === 2 && <StepTwoInputs />}
     </form>
   );

@@ -1,3 +1,4 @@
+import styles from '../styles/step2.module.css';
 interface PlanProps {
   plane: string;
   icon: string;
@@ -6,21 +7,23 @@ interface PlanProps {
 }
 function Plans({ plane, icon, price, bonus }: PlanProps) {
   return (
-    <label htmlFor={plane}>
+    <div className={styles.plansGroup}>
       <input
         type='radio'
-        checked={plane === 'arcade'}
+        checked={plane === plane}
         value={plane}
         name='plane'
         id={plane}
       />
-      <div>
-        <img src={icon} alt={plane + 'icon'} />
-        <h3>{plane}</h3>
-        <p>{price}</p>
-        {bonus && <p>{bonus}</p>}
-      </div>
-    </label>
+      <label htmlFor={plane} className={styles.plan}>
+        <div className={styles.planDetails}>
+          <img src={icon} alt={plane + 'icon'} />
+          <h3>{plane}</h3>
+          <p>{price}</p>
+          {bonus && <p className={styles.bonus}>{bonus}</p>}
+        </div>
+      </label>
+    </div>
   );
 }
 

@@ -4,7 +4,7 @@ interface Props {
 }
 function PlanSwitch({ onPlanChange, whichPlan }: Props) {
   return (
-    <div>
+    <>
       <label>Monthly</label>
       <input
         type='checkbox'
@@ -14,7 +14,7 @@ function PlanSwitch({ onPlanChange, whichPlan }: Props) {
         checked={whichPlan}
       />
       <label>Yearly</label>
-    </div>
+    </>
   );
 }
 
