@@ -1,17 +1,19 @@
 interface Props {
+  whichPlan: boolean;
   onPlanChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-function PlanSwitch({ onPlanChange }: Props) {
+function PlanSwitch({ onPlanChange, whichPlan }: Props) {
   return (
     <div>
-      <label htmlFor='switch'>Monthly</label>
+      <label>Monthly</label>
       <input
         type='checkbox'
-        id='switch'
-        value='yearly'
+        id='monthly'
+        value={whichPlan ? 'Monthly' : 'Yearly'}
         onChange={onPlanChange}
+        checked={whichPlan}
       />
-      <label htmlFor='switch'>Yearly</label>
+      <label>Yearly</label>
     </div>
   );
 }
