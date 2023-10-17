@@ -11,7 +11,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState(1);
 
   const nextStep = () => {
-    if (currentStep < 4) setCurrentStep(currentStep + 1);
+    if (currentStep < steps.length) setCurrentStep(currentStep + 1);
   };
   const prevStep = () => {
     if (currentStep > 1) setCurrentStep(currentStep - 1);
@@ -21,13 +21,11 @@ function App() {
       <MainLayout>
         <SideBar formStepNum={currentStep} />
         <main className={mainStyles.rightContainer}>
-          <div>
-            {steps.map((step) =>
-              step.stepNumber === currentStep ? (
-                <Form key={step.stepNumber} formDetails={step} />
-              ) : null
-            )}
-          </div>
+          {steps.map((step) =>
+            step.stepNumber === currentStep ? (
+              <Form key={step.stepNumber} formDetails={step} />
+            ) : null
+          )}
         </main>
         <footer className={footerStyles.footer}>
           <div className={footerStyles.buttonsBox}>

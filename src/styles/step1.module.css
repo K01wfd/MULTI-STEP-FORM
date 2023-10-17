@@ -4,6 +4,7 @@
   flex-direction: column;
   row-gap: 0.8rem;
 }
+/* STEP 1 */
 .inputGroup label {
   font-size: var(--fs-14);
   color: var(--blue-900);
@@ -27,7 +28,7 @@ input[type='email']:focus {
   border: 1px solid transparent;
   outline: 1px solid var(--blue-500);
 }
-
+/* STEP 1 END */
 @media screen and (max-width: 587px) {
   .inputGroup {
     margin-top: 2.5rem;
