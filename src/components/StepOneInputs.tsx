@@ -1,20 +1,12 @@
 import styles from '../styles/step1.module.css';
 import formStyles from '../styles/form.module.css';
+import { UseFormRegister } from 'react-hook-form';
+import { StepsInterfaces } from '../interface/formInterfaces';
 
-type PersonalData = {
-  name: string;
-  email: string;
-  phone: string;
-};
-type PersonalProps = PersonalData & {
-  updatePersonalData: (fields: Partial<PersonalData>) => void;
-};
-function StepOneInputs({
-  name,
-  email,
-  phone,
-  updatePersonalData,
-}: PersonalProps) {
+interface Props {
+  register: UseFormRegister<Partial<StepsInterfaces>>;
+}
+function StepOneInputs({ register }: Props) {
   return (
     <>
       <div className={formStyles.formHeader}>
@@ -28,9 +20,7 @@ function StepOneInputs({
           type='text'
           placeholder='e.g. Stephen King'
           id='name'
-          required
-          value={name}
-          onChange={(e) => updatePersonalData({ name: e.target.value })}
+          {...register('name')}
         />
       </div>
       <div className={styles.inputGroup}>
@@ -39,9 +29,7 @@ function StepOneInputs({
           type='email'
           placeholder='e.g. stephenking@lorem.com'
           id='email'
-          value={email}
-          required
-          onChange={(e) => updatePersonalData({ email: e.target.value })}
+          {...register('email')}
         />
       </div>
       <div className={styles.inputGroup}>
@@ -50,9 +38,7 @@ function StepOneInputs({
           type='text'
           placeholder='e.g. Stephen King'
           id='phone'
-          required
-          value={phone}
-          onChange={(e) => updatePersonalData({ phone: e.target.value })}
+          {...register('phone')}
         />
       </div>
     </>

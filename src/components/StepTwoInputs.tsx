@@ -6,6 +6,13 @@ import PlanSwitch from './PlanSwitch';
 import styles from '../styles/step2.module.css';
 import formStyles from '../styles/form.module.css';
 import { useState } from 'react';
+import { UseFormRegister } from 'react-hook-form';
+import { StepsInterfaces } from '../interface/formInterfaces';
+
+interface Props {
+  register: UseFormRegister<Partial<StepsInterfaces>>;
+}
+
 const monthlyPlan = [
   { plan: 'arcade', price: '$9/mo', icon: arcade },
   { plan: 'advanced', price: '$12/mo', icon: advanced },
@@ -21,7 +28,7 @@ const yearlyPlan = [
   },
   { plan: 'pro', price: '$150/mo', icon: pro, bonus: '2 months free' },
 ];
-function StepTwoInputs() {
+function StepTwoInputs({ register }: Props) {
   const [isYearly, setIsYearly] = useState(false);
 
   const handlePlanChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,10 +44,17 @@ function StepTwoInputs() {
       <div className={styles.plansWrapper}>
         {!isYearly
           ? monthlyPlan.map(({ plan, price, icon }) => (
-              <Plans key={plan} icon={icon} plane={plan} price={price} />
+              <Plans
+                register={register}
+                key={plan}
+                icon={icon}
+                plane={plan}
+                price={price}
+              />
             ))
           : yearlyPlan.map(({ plan, price, icon, bonus }) => (
               <Plans
+                register={register}
                 key={plan}
                 icon={icon}
                 plane={plan}

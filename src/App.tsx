@@ -1,60 +1,55 @@
-import { useMultiStepForm } from './hooks/useMultiStepForm';
 import MainLayout from './components/MainLayout';
 import mainStyles from './styles/main.module.css';
 import SideBar from './components/SideBar';
 import footerStyles from './styles/footer.module.css';
-import StepOneInputs from './components/StepOneInputs';
 import StepTwoInputs from './components/StepTwoInputs';
 import StepThree from './components/StepThree';
 import StepFour from './components/StepFour';
-import { FormEvent, useState } from 'react';
-import { StepsDataInterface } from './interface/formData';
-import { INITIAL_DATA } from './interface/formData';
+import { FieldValues, useForm } from 'react-hook-form';
+import StepOneInputs from './components/StepOneInputs';
+import { useState } from 'react';
+import { StepsInterfaces } from './interface/formInterfaces';
 
 function App() {
-  // FORM STEPS DATA STATE
-  const [data, setData] = useState<StepsDataInterface>(INITIAL_DATA);
+  const [currentStep, setCurrentStep] = useState(1);
+  // type PersonalInfoType = z.infer<typeof PersonalInfoSchema>;
 
-  const updatePersonalData = (fields: Partial<StepsDataInterface>) => {
-    setData((prev) => {
-      return { ...prev, ...fields };
-    });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Partial<StepsInterfaces>>();
+
+  const next = () => {
+    if (currentStep < 4) setCurrentStep(currentStep + 1);
   };
-  // USE FORM HOOK
-  const { currentStep, nextStep, prevStep, step, isFirstStep, isLastStep } =
-    useMultiStepForm([
-      <StepOneInputs {...data} updatePersonalData={updatePersonalData} />,
-      <StepTwoInputs />,
-      <StepThree />,
-      <StepFour
-        periodPrice=''
-        planTitle=''
-        planPeriod=''
-        planAddsOn={[]}
-        totalPrice=''
-      />,
-    ]);
-
+  const prev = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
   // HANDLE SUBMIT
-  const onSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    nextStep();
-    console.log(e);
+  const onSubmit = (data: FieldValues) => {
+    next();
+    console.log(data);
   };
+
   return (
     <>
       <MainLayout>
-        <SideBar formStepNum={currentStep + 1} />
+        <SideBar formStepNum={currentStep} />
         <main className={mainStyles.rightContainer}>
-          <form id='primaryForm' onSubmit={onSubmit}>
-            {step}
+          <form id='primaryForm' onSubmit={handleSubmit(onSubmit)}>
+            {currentStep === 1 && <StepOneInputs register={register} />}
+            {currentStep === 2 && <StepTwoInputs register={register} />}
           </form>
         </main>
         <footer className={footerStyles.footer}>
           <div className={footerStyles.buttonsBox}>
-            {!isFirstStep && <button onClick={prevStep}>back</button>}
+            {currentStep > 1 && <button onClick={prev}>back</button>}
+
             <button type='submit' form='primaryForm'>
-              {isLastStep ? 'Confirm' : 'Next'}
+              next
             </button>
           </div>
         </footer>
