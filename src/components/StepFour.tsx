@@ -1,4 +1,5 @@
 import styles from '../styles/step4.module.css';
+import formStyles from '../styles/form.module.css';
 interface Add {
   addTitle: string;
   addPrice: string;
@@ -19,6 +20,10 @@ function StepFour({
 }: Props) {
   return (
     <>
+      <div className={formStyles.formHeader}>
+        <h2>Finishing up</h2>
+        <p>Double-check everything looks OK before confirming.</p>
+      </div>
       <article className={styles.mainPlan}>
         <div className={styles.planPeriod}>
           <title className={styles.planHeader}>

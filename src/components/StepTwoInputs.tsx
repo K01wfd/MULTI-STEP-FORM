@@ -4,6 +4,7 @@ import advanced from '../assets/images/icon-advanced.svg';
 import pro from '../assets/images/icon-pro.svg';
 import PlanSwitch from './PlanSwitch';
 import styles from '../styles/step2.module.css';
+import formStyles from '../styles/form.module.css';
 import { useState } from 'react';
 const monthlyPlan = [
   { plan: 'arcade', price: '$9/mo', icon: arcade },
@@ -25,11 +26,14 @@ function StepTwoInputs() {
 
   const handlePlanChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setIsYearly(!isYearly);
-    console.log(event.target.value);
   };
 
   return (
     <>
+      <div className={formStyles.formHeader}>
+        <h2>Select your plan</h2>
+        <p>You have the option of monthly or yearly billing.</p>
+      </div>
       <div className={styles.plansWrapper}>
         {!isYearly
           ? monthlyPlan.map(({ plan, price, icon }) => (

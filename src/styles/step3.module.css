@@ -55,10 +55,12 @@ input[type='checkbox']:checked + .addsGroup {
 }
 .addsDetails p {
   font-size: var(--fs-14);
+  color: var(--gray-500);
 }
 .addsPrice {
   color: var(--blue-500) !important;
   font-size: var(--fs-14);
+  font-weight: 500;
 }
 @media screen and (max-width: 587px) {
   .addsDetails h3 {

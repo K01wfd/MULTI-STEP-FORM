@@ -1,18 +1,18 @@
 .formHeader {
   margin-bottom: 5rem;
 }
-.form h2 {
+.formHeader h2 {
   font-size: var(--fs-32);
   font-weight: 700;
   margin-bottom: 0.7rem;
 }
-.form p {
+.formHeader p {
   color: var(--gray-500);
   font-size: var(--fs-16);
 }
 
 @media screen and (max-width: 587px) {
-  .form h2 {
+  .formHeader h2 {
     font-size: var(--fs-24);
   }
 }

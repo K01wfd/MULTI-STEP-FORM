@@ -1,17 +1,15 @@
 import styles from '../styles/step3.module.css';
-interface Props {
-  onAddSelect: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-function StepThree({ onAddSelect }: Props) {
+import formStyles from '../styles/form.module.css';
+
+function StepThree() {
   return (
     <>
+      <div className={formStyles.formHeader}>
+        <h2>Pick add-ons</h2>
+        <p>Add-ons help enhance your gaming experience.</p>
+      </div>
       <div>
-        <input
-          type='checkbox'
-          onChange={onAddSelect}
-          id='onlineService'
-          value='onlineService'
-        />
+        <input type='checkbox' id='onlineService' value='onlineService' />
         <label htmlFor='onlineService' className={`${styles.addsGroup}`}>
           <div className={styles.addsDetails}>
             <h3>Online service</h3>
@@ -21,12 +19,7 @@ function StepThree({ onAddSelect }: Props) {
         </label>
       </div>
       <div>
-        <input
-          type='checkbox'
-          id='cloudStorage'
-          onChange={onAddSelect}
-          value='cloudStorage'
-        />
+        <input type='checkbox' id='cloudStorage' value='cloudStorage' />
         <label htmlFor='cloudStorage' className={`${styles.addsGroup}`}>
           <div className={styles.addsDetails}>
             <h3>Larger storage</h3>
@@ -36,12 +29,7 @@ function StepThree({ onAddSelect }: Props) {
         </label>
       </div>
       <div>
-        <input
-          type='checkbox'
-          id='customeProfile'
-          onChange={onAddSelect}
-          value='customeProfile'
-        />
+        <input type='checkbox' id='customeProfile' value='customeProfile' />
         <label htmlFor='customeProfile' className={`${styles.addsGroup}`}>
           <div className={styles.addsDetails}>
             <h3>Customizable Profile</h3>

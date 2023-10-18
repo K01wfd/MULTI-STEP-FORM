@@ -1,41 +1,61 @@
-import { useState } from 'react';
+import { useMultiStepForm } from './hooks/useMultiStepForm';
 import MainLayout from './components/MainLayout';
-import SideBar from './components/SideBar';
-import Form from './components/Form';
-import Button from './components/Button';
-import LinkButton from './components/LinkButton';
-import { steps } from './data/steps';
 import mainStyles from './styles/main.module.css';
+import SideBar from './components/SideBar';
 import footerStyles from './styles/footer.module.css';
-function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+import StepOneInputs from './components/StepOneInputs';
+import StepTwoInputs from './components/StepTwoInputs';
+import StepThree from './components/StepThree';
+import StepFour from './components/StepFour';
+import { FormEvent, useState } from 'react';
+import { StepsDataInterface } from './interface/formData';
+import { INITIAL_DATA } from './interface/formData';
 
-  const nextStep = () => {
-    if (currentStep < steps.length) setCurrentStep(currentStep + 1);
+function App() {
+  // FORM STEPS DATA STATE
+  const [data, setData] = useState<StepsDataInterface>(INITIAL_DATA);
+
+  const updatePersonalData = (fields: Partial<StepsDataInterface>) => {
+    setData((prev) => {
+      return { ...prev, ...fields };
+    });
   };
-  const prevStep = () => {
-    if (currentStep > 1) setCurrentStep(currentStep - 1);
+  // USE FORM HOOK
+  const { currentStep, nextStep, prevStep, step, isFirstStep, isLastStep } =
+    useMultiStepForm([
+      <StepOneInputs {...data} updatePersonalData={updatePersonalData} />,
+      <StepTwoInputs />,
+      <StepThree />,
+      <StepFour
+        periodPrice=''
+        planTitle=''
+        planPeriod=''
+        planAddsOn={[]}
+        totalPrice=''
+      />,
+    ]);
+
+  // HANDLE SUBMIT
+  const onSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    nextStep();
+    console.log(e);
   };
   return (
     <>
       <MainLayout>
-        <SideBar formStepNum={currentStep} />
+        <SideBar formStepNum={currentStep + 1} />
         <main className={mainStyles.rightContainer}>
-          {steps.map(({ stepNumber, stepTitle, stepSubTitle }) =>
-            stepNumber === currentStep ? (
-              <Form
-                key={stepNumber}
-                stepNumber={stepNumber}
-                stepTitle={stepTitle}
-                stepSubTitle={stepSubTitle}
-              />
-            ) : null
-          )}
+          <form id='primaryForm' onSubmit={onSubmit}>
+            {step}
+          </form>
         </main>
         <footer className={footerStyles.footer}>
           <div className={footerStyles.buttonsBox}>
-            {currentStep > 1 && <LinkButton onPrevStep={() => prevStep()} />}
-            <Button buttonText='next step' onNextStep={() => nextStep()} />
+            {!isFirstStep && <button onClick={prevStep}>back</button>}
+            <button type='submit' form='primaryForm'>
+              {isLastStep ? 'Confirm' : 'Next'}
+            </button>
           </div>
         </footer>
       </MainLayout>

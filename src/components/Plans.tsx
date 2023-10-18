@@ -8,13 +8,7 @@ interface PlanProps {
 function Plans({ plane, icon, price, bonus }: PlanProps) {
   return (
     <div className={styles.plansGroup}>
-      <input
-        type='radio'
-        checked={plane === plane}
-        value={plane}
-        name='plane'
-        id={plane}
-      />
+      <input type='radio' value={plane} name='plane' id={plane} />
       <label htmlFor={plane} className={styles.plan}>
         <div className={styles.planDetails}>
           <img src={icon} alt={plane + 'icon'} />
