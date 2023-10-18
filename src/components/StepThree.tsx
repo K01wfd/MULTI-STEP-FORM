@@ -1,9 +1,8 @@
 import styles from '../styles/step3.module.css';
 interface Props {
-  whichActiveAdd: string[];
   onAddSelect: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-function StepThree({ onAddSelect, whichActiveAdd }: Props) {
+function StepThree({ onAddSelect }: Props) {
   return (
     <>
       <div>

@@ -29,10 +29,7 @@ function Form({ stepNumber, stepTitle, stepSubTitle }: FormProps) {
       {stepNumber === 1 && <StepOneInputs />}
       {stepNumber === 2 && <StepTwoInputs />}
       {stepNumber === 3 && (
-        <StepThree
-          whichActiveAdd={checkedAdds}
-          onAddSelect={(event) => handleAddSelect(event)}
-        />
+        <StepThree onAddSelect={(event) => handleAddSelect(event)} />
       )}
     </form>
   );

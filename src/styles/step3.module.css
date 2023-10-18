@@ -1,6 +1,6 @@
 input[type='checkbox'] {
   position: relative;
-  transform: translate(2rem, 6rem);
+  transform: translate(2rem, 4.5rem);
   -moz-appearance: none;
   -webkit-appearance: none;
   font: inherit;
@@ -35,13 +35,12 @@ input[type='checkbox']:checked + .addsGroup {
   background-color: var(--gray-200);
 }
 .addsGroup {
-  padding: 1.8rem 2.3rem 1.8rem 6rem;
+  padding: 1.5rem 2.3rem 1.5rem 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 4rem;
   border: 1px solid var(--gray-400);
-  margin-top: 1rem;
   width: 100%;
 }
 .addsGroup:hover {
@@ -52,6 +51,7 @@ input[type='checkbox']:checked + .addsGroup {
 .addsDetails h3 {
   font-weight: 500;
   margin-bottom: 0.6rem;
+  font-size: var(--fs-16);
 }
 .addsDetails p {
   font-size: var(--fs-14);
@@ -59,4 +59,15 @@ input[type='checkbox']:checked + .addsGroup {
 .addsPrice {
   color: var(--blue-500) !important;
   font-size: var(--fs-14);
+}
+@media screen and (max-width: 587px) {
+  .addsDetails h3 {
+    font-size: var(--fs-14);
+  }
+  .addsDetails p {
+    font-size: var(--fs-12);
+  }
+  .addsPrice {
+    font-size: var(--fs-12);
+  }
 }
