@@ -3,6 +3,7 @@ import StepTwoInputs from './StepTwoInputs';
 import formStyles from '../styles/form.module.css';
 import StepThree from './StepThree';
 import { useState } from 'react';
+import StepFour from './StepFour';
 
 interface FormProps {
   stepNumber: number;
@@ -11,6 +12,7 @@ interface FormProps {
 }
 function Form({ stepNumber, stepTitle, stepSubTitle }: FormProps) {
   const [checkedAdds, setWhichAddActive] = useState<string[]>([]);
+
   const handleAddSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const originalAdds = [...checkedAdds];
     if (event.target.checked) {
@@ -31,6 +33,7 @@ function Form({ stepNumber, stepTitle, stepSubTitle }: FormProps) {
       {stepNumber === 3 && (
         <StepThree onAddSelect={(event) => handleAddSelect(event)} />
       )}
+      {/* {stepNumber === 4 && <StepFour/>} */}
     </form>
   );
 }

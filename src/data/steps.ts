@@ -14,4 +14,9 @@ export const steps = [
     stepTitle: 'Pick add-ons',
     stepSubTitle: 'Add-ons help enhance your gaming experience.',
   },
+  {
+    stepNumber: 4,
+    stepTitle: 'Finishing up',
+    stepSubTitle: 'Double-check everything looks OK before confirming.',
+  },
 ];
