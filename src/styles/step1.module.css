@@ -4,6 +4,10 @@
   row-gap: 0.8rem;
   margin-top: 3rem;
 }
+.labelGroup {
+  display: flex;
+  justify-content: space-between;
+}
 /* STEP 1 */
 .inputGroup label {
   font-size: var(--fs-14);
@@ -27,6 +31,17 @@ input[type='email']::placeholder {
 input[type='email']:focus {
   border: 1px solid transparent;
   outline: 1px solid var(--blue-500);
+}
+.errorText {
+  font-size: var(--fs-14);
+  font-weight: 700;
+  color: var(--error);
+  align-self: flex-end;
+}
+.errorField {
+  outline: none !important;
+  border: none !important;
+  border: 1px solid var(--error) !important;
 }
 /* STEP 1 END */
 @media screen and (max-width: 587px) {
