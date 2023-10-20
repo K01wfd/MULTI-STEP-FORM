@@ -6,11 +6,11 @@ import StepTwo from './components/StepTwo';
 import StepThree from './components/StepThree';
 import StepFour from './components/StepFour';
 import StepOne from './components/StepOne';
-import { useMultiStepForm } from './hooks/useMultiStepForm';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { FormData } from './types/formData';
-import { useState } from 'react';
-const INITIAL_DATA = {
+import { useEffect, useState } from 'react';
+
+const INITIAL_FORM_DATA = {
   step1: {
     name: '',
     email: '',
@@ -34,44 +34,77 @@ const INITIAL_DATA = {
     },
   },
 };
+
 function App() {
+  const [currentStep, setCurrentStep] = useState(2);
+  const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
+  let planPeriod = 0;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-
-  const [formData, setFormData] = useState<FormData>(INITIAL_DATA);
-
   const onSubmit = (data: FormData) => {
-    setFormData(data);
+    setFormData((prev) => {
+      return { ...prev, ...data };
+    });
     nextStep();
   };
-  const planPeriod: number = formData.step2.plan.indexOf('monthly');
-  const { currentStep, isFirstStep, isLastStep, nextStep, step, prevStep } =
-    useMultiStepForm(
-      [
-        <StepOne register={register} errors={errors} />,
-        <StepTwo register={register} isMonthly={planPeriod} />,
-        <StepThree register={register} isMonthly={planPeriod} />,
-      ],
-      formData
-    );
+  if (formData.step2.plan) {
+    planPeriod = formData.step2.plan.indexOf('monthly');
+  }
+  useEffect(() => {
+    if (currentStep === 4) {
+      // Check if the current step is 4
+      const newFormData = formData;
+      setFormData(newFormData);
+      console.log(formData);
+    }
+  }, [currentStep]);
 
+  const nextStep = () => {
+    if (currentStep < 4) {
+      setCurrentStep(currentStep + 1);
+    }
+  };
+  const prevStep = () => {
+    if (currentStep > 1) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+  const handlePlanChangeReq = () => {
+    setCurrentStep(2);
+  };
   return (
     <>
       <MainLayout>
-        <SideBar formStepNum={currentStep + 1} />
+        <SideBar formStepNum={currentStep} />
         <main className={mainStyles.rightContainer}>
           <form id='primaryForm' onSubmit={handleSubmit(onSubmit)}>
-            {step}
+            {currentStep === 1 && (
+              <StepOne register={register} errors={errors} />
+            )}
+            {currentStep === 2 && (
+              <StepTwo register={register} isMonthly={planPeriod} />
+            )}
+            {currentStep === 3 && (
+              <StepThree register={register} isMonthly={planPeriod} />
+            )}
+            {currentStep === 4 && (
+              <StepFour
+                data={formData}
+                onChangeRequest={() => handlePlanChangeReq()}
+              />
+            )}
           </form>
         </main>
         <footer className={footerStyles.footer}>
           <div className={footerStyles.buttonsBox}>
-            {!isFirstStep && <button onClick={() => prevStep()}>Back</button>}
+            {currentStep > 1 && (
+              <button onClick={() => prevStep()}>Back</button>
+            )}
             <button form='primaryForm'>
-              {isLastStep ? 'Confirm' : 'Next'}
+              {currentStep === 4 ? 'Confirm' : 'Next'}
             </button>
           </div>
         </footer>
