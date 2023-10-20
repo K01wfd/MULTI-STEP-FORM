@@ -9,16 +9,37 @@ export type FormData = {
   };
   step3: {
     onlineService: {
-      period: string;
-      price: number;
+      monthly: string;
+      yearly: string;
     };
     largerStorage: {
-      period: string;
-      price: number;
+      monthly: string;
+      yearly: string;
     };
     customeProfile: {
-      period: string;
-      price: number;
+      monthly: string;
+      yearly: string;
     };
   };
+};
+type FinalAddOns = {
+  title: string;
+  price: string;
+};
+export type ReadyDataShape = {
+  personalInfo: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  plan: {
+    title: string;
+    period: string;
+    price: string;
+  };
+  adds: {
+    monthly: FinalAddOns[];
+    yearly: FinalAddOns[];
+  };
+  total: string;
 };

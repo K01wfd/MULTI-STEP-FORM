@@ -1,22 +1,22 @@
 import styles from '../styles/step2.module.css';
 interface Props {
-  whichPlan: boolean;
+  isYearly: boolean;
   onPlanChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   activePlane?: string;
 }
-function PlanSwitch({ onPlanChange, whichPlan, activePlane }: Props) {
+function PlanSwitch({ onPlanChange, isYearly, activePlane }: Props) {
   return (
     <>
-      <label className={!whichPlan ? activePlane : ''}>Monthly</label>
+      <label className={!isYearly ? activePlane : ''}>Monthly</label>
       <input
         type='checkbox'
         id='switch'
-        value={whichPlan ? 'Monthly' : 'Yearly'}
+        value={isYearly ? 'Monthly' : 'Yearly'}
         onChange={onPlanChange}
-        checked={whichPlan}
+        checked={isYearly}
       />
       <label htmlFor='switch' className={styles.switch}></label>
-      <label className={whichPlan ? activePlane : ''}>Yearly</label>
+      <label className={isYearly ? activePlane : ''}>Yearly</label>
     </>
   );
 }

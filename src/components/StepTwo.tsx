@@ -8,12 +8,13 @@ import MonthlyPlans from './sub-components/MonthlyPlans';
 import YearlyPlans from './sub-components/YearlyPlans';
 type Props = {
   register: UseFormRegister<FormData>;
+  isMonthly: number;
 };
 
-function StepTwoInputs({ register }: Props) {
-  // state for plan switch
-  const [isYearly, setIsYearly] = useState(false);
+function StepTwoInputs({ register, isMonthly }: Props) {
+  let yearlyPlan: boolean = isMonthly >= 0 ? true : false; // false at the begining
 
+  const [isYearly, setIsYearly] = useState(!yearlyPlan);
   const handlePlanChange = () => {
     setIsYearly(!isYearly);
   };
@@ -28,7 +29,7 @@ function StepTwoInputs({ register }: Props) {
       {isYearly && <YearlyPlans register={register} />}
       <div className={styles.planSwitch}>
         <PlanSwitch
-          whichPlan={isYearly}
+          isYearly={isYearly}
           onPlanChange={() => handlePlanChange()}
           activePlane={styles.activePlan}
         />

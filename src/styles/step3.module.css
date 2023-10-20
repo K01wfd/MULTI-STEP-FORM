@@ -35,13 +35,13 @@ input[type='checkbox']:checked + .addsGroup {
   background-color: var(--gray-200);
 }
 .addsGroup {
-  padding: 1.5rem 2.3rem 1.5rem 6rem;
+  padding: 1.4rem 2.3rem 1.4rem 6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 4rem;
   border: 1px solid var(--gray-400);
-  width: 100%;
+  border-radius: 8px;
 }
 .addsGroup:hover {
   cursor: pointer;

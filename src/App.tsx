@@ -10,26 +10,54 @@ import { useMultiStepForm } from './hooks/useMultiStepForm';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { FormData } from './types/formData';
 import { useState } from 'react';
-
+const INITIAL_DATA = {
+  step1: {
+    name: '',
+    email: '',
+    phone: '',
+  },
+  step2: {
+    plan: '',
+  },
+  step3: {
+    onlineService: {
+      monthly: '',
+      yearly: '',
+    },
+    largerStorage: {
+      monthly: '',
+      yearly: '',
+    },
+    customeProfile: {
+      monthly: '',
+      yearly: '',
+    },
+  },
+};
 function App() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
-  const [formData, setFormData] = useState<FormData>();
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+
+  const [formData, setFormData] = useState<FormData>(INITIAL_DATA);
+
+  const onSubmit = (data: FormData) => {
     setFormData(data);
     nextStep();
   };
-  const planPeriod = formData?.step2.plan.indexOf('monthly');
-  console.log(planPeriod);
+  const planPeriod: number = formData.step2.plan.indexOf('monthly');
   const { currentStep, isFirstStep, isLastStep, nextStep, step, prevStep } =
-    useMultiStepForm([
-      <StepOne register={register} errors={errors} />,
-      <StepTwo register={register} />,
-      <StepThree isMonthly={planPeriod} />,
-    ]);
+    useMultiStepForm(
+      [
+        <StepOne register={register} errors={errors} />,
+        <StepTwo register={register} isMonthly={planPeriod} />,
+        <StepThree register={register} isMonthly={planPeriod} />,
+      ],
+      formData
+    );
+
   return (
     <>
       <MainLayout>
