@@ -45,22 +45,20 @@ function StepFour({ data, onChangeRequest }: Props) {
 
   // calculate total price by extracting the values from the data
   const planPrice: any = readyData.plan.price.match(/\d+/g);
-  let addsOnTotal = '';
+  let addsOnPrices: string[] = [];
   if (readyData.plan.period === 'monthly') {
-    readyData.adds.monthly.forEach(
-      (add) => (addsOnTotal += add.price.match(/\d+/g))
-    );
+    readyData.adds.monthly.forEach((add) => {
+      let extractedPrice: string | any = add.price.match(/\d+/g)?.join('');
+      addsOnPrices.push(extractedPrice);
+    });
   } else {
-    readyData.adds.yearly.forEach(
-      (add, i) => (addsOnTotal += add.price.match(/\d+/g)).split('')[i]
-    );
+    readyData.adds.yearly.forEach((add) => {
+      let extractedPrice: string | any = add.price.match(/\d+/g)?.join('');
+      addsOnPrices.push(extractedPrice);
+    });
   }
-  let addTotal = addsOnTotal
-    .split('')
-    .reduce((acc, item) => acc + parseInt(item), 0);
-  let total = addTotal + parseInt(planPrice);
-  console.log(addTotal);
-  console.log();
+  let totalAddsOn = addsOnPrices.reduce((acc, item) => acc + parseInt(item), 0);
+  let total = parseInt(planPrice) + totalAddsOn;
   return (
     <>
       <div className={formStyles.formHeader}>
@@ -68,17 +66,18 @@ function StepFour({ data, onChangeRequest }: Props) {
         <p>Double-check everything looks OK before confirming.</p>
       </div>
       <article className={styles.mainPlan}>
-        <div className={styles.planPeriod}>
-          <div className={styles.planHeader}>
+        <div className={styles.planDetails}>
+          <div className={styles.planTitle}>
             <h3>
-              {readyData.plan.title}
-              {readyData.plan.period}
+              {readyData.plan.title} ({readyData.plan.period})
             </h3>
-            <button onClick={onChangeRequest}>Change</button>
+            <button className={styles.changePlanBtn} onClick={onChangeRequest}>
+              Change
+            </button>
           </div>
           <p>{readyData.plan.price}</p>
         </div>
-
+        <div className={styles.ruler}></div>
         <div className={styles.planAdds}>
           {readyData.plan.period === 'monthly'
             ? readyData.adds.monthly.map((add) => (
@@ -95,10 +94,10 @@ function StepFour({ data, onChangeRequest }: Props) {
               ))}
         </div>
       </article>
-      <hr />
+
       <div className={styles.total}>
         <p className={styles.totalPeriod}>
-          Total(per {readyData.plan.period === 'monthly' ? 'Month' : 'Year'})
+          Total (per {readyData.plan.period === 'monthly' ? 'Month' : 'Year'})
         </p>
         <p className={styles.totalPrice}>
           +${total}/{readyData.plan.period === 'monthly' ? 'mo' : 'yr'}

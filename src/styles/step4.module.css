@@ -1,0 +1,65 @@
+.mainPlan {
+  background: var(--gray-200);
+  padding-block: 1.6rem;
+  padding-inline: 2.4rem;
+  margin-bottom: 3rem;
+}
+.mainPlan .ruler {
+  margin-block: 2.5rem;
+  width: 100%;
+  height: 1px;
+  background-color: var(--gray-500);
+}
+.planDetails {
+  display: flex;
+  justify-content: space-between;
+}
+.planTitle {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.changePlanBtn {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--gray-500);
+  border-bottom: 2px solid var(--gray-500);
+  font-size: var(--fs-14);
+}
+.changePlanBtn:hover {
+  color: var(--blue-500);
+  border-bottom: 2px solid var(--blue-500);
+}
+.planAdds {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: var(--fs-14);
+}
+
+.addsContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.addsContainer :first-child {
+  color: var(--gray-500);
+}
+.total {
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+.totalPeriod {
+  color: var(--gray-500);
+  font-weight: 400;
+  font-size: var(--fs-14);
+}
+.totalPrice {
+  color: var(--blue-500);
+  font-size: 2rem;
+  font-weight: 700;
+}

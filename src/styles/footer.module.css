@@ -1,5 +1,7 @@
 .footer {
-  padding: 3rem 6rem;
+  padding: 3rem;
+  width: 90%;
+  margin-inline: auto;
 }
 .buttonsBox {
   display: flex;
@@ -9,5 +11,6 @@
 @media screen and (max-width: 587px) {
   .footer {
     background: var(--white);
+    width: 100%;
   }
 }
