@@ -1,0 +1,22 @@
+.thankyouContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 500px;
+  text-align: center;
+}
+.thankyouContainer img {
+  margin-bottom: 3rem;
+}
+.thankyouContainer h2 {
+  font-size: var(--fs-32);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.thankyouContainer p {
+  color: var(--gray-500);
+  max-width: 50ch;
+  line-height: 1.7;
+}

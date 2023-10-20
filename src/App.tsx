@@ -9,6 +9,7 @@ import StepOne from './components/StepOne';
 import { useForm } from 'react-hook-form';
 import { FormData } from './types/formData';
 import { useEffect, useState } from 'react';
+import StepFive from './components/StepFive';
 
 const INITIAL_FORM_DATA = {
   step1: {
@@ -36,7 +37,7 @@ const INITIAL_FORM_DATA = {
 };
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(2);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   let planPeriod = 0;
   const {
@@ -58,12 +59,11 @@ function App() {
       // Check if the current step is 4
       const newFormData = formData;
       setFormData(newFormData);
-      console.log(formData);
     }
   }, [currentStep]);
 
   const nextStep = () => {
-    if (currentStep < 4) {
+    if (currentStep < 5) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -78,7 +78,7 @@ function App() {
   return (
     <>
       <MainLayout>
-        <SideBar formStepNum={currentStep} />
+        <SideBar formStepNum={currentStep > 4 ? 4 : currentStep} />
         <main className={mainStyles.rightContainer}>
           <form id='primaryForm' onSubmit={handleSubmit(onSubmit)}>
             {currentStep === 1 && (
@@ -90,24 +90,39 @@ function App() {
             {currentStep === 3 && (
               <StepThree register={register} isMonthly={planPeriod} />
             )}
-            {currentStep === 4 && (
-              <StepFour
-                data={formData}
-                onChangeRequest={() => handlePlanChangeReq()}
-              />
-            )}
           </form>
+          {currentStep === 4 && (
+            <StepFour
+              data={formData}
+              onChangeRequest={() => handlePlanChangeReq()}
+            />
+          )}
+          {currentStep === 5 && <StepFive />}
         </main>
-        <footer className={footerStyles.footer}>
-          <div className={footerStyles.buttonsBox}>
-            {currentStep > 1 && (
-              <button onClick={() => prevStep()}>Back</button>
-            )}
-            <button form='primaryForm'>
-              {currentStep === 4 ? 'Confirm' : 'Next'}
-            </button>
-          </div>
-        </footer>
+        {currentStep < 5 && (
+          <footer className={footerStyles.footer}>
+            <div className={footerStyles.buttonsBox}>
+              {currentStep > 1 && (
+                <button
+                  className={footerStyles.prevBtn}
+                  onClick={() => prevStep()}
+                >
+                  Go Back
+                </button>
+              )}
+              <button
+                form='primaryForm'
+                className={
+                  currentStep < 4
+                    ? footerStyles.nextBtn
+                    : footerStyles.confirmBtn
+                }
+              >
+                {currentStep === 4 ? 'Confirm' : 'Next'}
+              </button>
+            </div>
+          </footer>
+        )}
       </MainLayout>
     </>
   );

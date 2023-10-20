@@ -8,6 +8,7 @@
   padding: 4rem 3.2rem;
   color: var(--white);
   grid-row: 1 / -1;
+  min-height: 550px;
 }
 .navList {
   list-style: none;
