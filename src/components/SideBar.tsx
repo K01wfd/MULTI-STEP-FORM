@@ -12,7 +12,7 @@ function NavBar({ formStepNum }: Props) {
   ];
   return (
     <aside className={styles.navWrapper}>
-      <nav>
+      <div>
         <ul className={styles.navList}>
           {stepDetails.map(({ stepNumber, stepTitle }) =>
             formStepNum === stepNumber ? (
@@ -32,7 +32,7 @@ function NavBar({ formStepNum }: Props) {
             )
           )}
         </ul>
-      </nav>
+      </div>
     </aside>
   );
 }
