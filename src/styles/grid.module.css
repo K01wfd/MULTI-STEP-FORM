@@ -8,8 +8,7 @@
   background-color: var(--white);
   box-shadow: 0px 25px 40px -20px rgba(0, 0, 0, 0.1);
   padding: 2rem 1.5rem;
-  margin-block: 4rem;
-  min-height: 600px;
+  margin-block: 2rem;
 }
 
 @media screen and (max-width: 587px) {

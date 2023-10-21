@@ -37,7 +37,7 @@ const INITIAL_FORM_DATA = {
 };
 
 function App() {
-  const [currentStep, setCurrentStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(2);
   const [formData, setFormData] = useState<FormData>(INITIAL_FORM_DATA);
   let planPeriod = 0;
   const {
